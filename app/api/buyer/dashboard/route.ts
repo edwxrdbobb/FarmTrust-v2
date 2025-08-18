@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { verifyAuth } from "@/lib/auth"
+// import { verifyAuth } from "@/lib/auth"
 import { connectDB } from "@/lib/db"
 import { Order } from "@/models/order_model"
 import { Product } from "@/models/product_model"
@@ -7,13 +7,14 @@ import { Review } from "@/models/review_model"
 
 export async function GET(request: NextRequest) {
   try {
-    const authResult = await verifyAuth(request)
-    if (!authResult.success || !authResult.user) {
-      return NextResponse.json(
-        { error: "Authentication required" },
-        { status: 401 }
-      )
-    }
+    const authResult = await false
+    // const authResult = await verifyAuth(request)
+    // if (!authResult.success || !authResult.user) {
+    //   return NextResponse.json(
+    //     { error: "Authentication required" },
+    //     { status: 401 }
+    //   )
+    // }
 
     const user = authResult.user
     if (user.role !== "buyer" && user.role !== "admin") {

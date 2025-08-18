@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/database";
+import { connectDB } from "@/lib/db";
 import { getUserById, updateUser } from "@/repositories/user_repo";
 import bcrypt from "bcrypt";
 
 export async function PUT(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const body = await request.json();
     const { userId, currentPassword, newPassword } = body;

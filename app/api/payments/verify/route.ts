@@ -3,7 +3,7 @@ import { paymentProcessor } from '@/services/payment_processor_service';
 import { verifyToken } from '@/lib/jwt-utils';
 import * as authService from "@/services/auth_service";
 import { monimeService } from "@/services/monime_service";
-import { connectDB } from "@/lib/mongodb";
+import { connectDB } from "@/lib/db";
 import Order from "@/models/order_model";
 
 export async function POST(request: NextRequest) {
