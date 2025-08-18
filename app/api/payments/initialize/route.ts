@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as authService from "@/services/auth_service";
 import { monimeService } from "@/services/monime_service";
-import { connectDB } from "@/lib/mongodb";
+import { connectDB } from "@/lib/db";
 import Order from "@/models/Order";
 
 async function getUserFromToken(request: NextRequest) {

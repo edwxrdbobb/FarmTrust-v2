@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/database";
+import { connectDB } from "@/lib/db";
 import { getUserById, updateUser } from "@/repositories/user_repo";
 
 export async function GET(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     // In a real app, you would get the user ID from session/auth
     // For now, we'll use a query parameter or mock it
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const body = await request.json();
     const { userId, name, email, phone, address, profileImage } = body;

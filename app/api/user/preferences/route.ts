@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/database";
+import { connectDB } from "@/lib/db";
 import { getUserById, updateUser } from "@/repositories/user_repo";
 
 interface UserPreferences {
@@ -21,7 +21,7 @@ interface UserPreferences {
 
 export async function GET(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const url = new URL(request.url);
     const userId = url.searchParams.get('userId');
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
-    await connectToDatabase();
+    await connectDB();
     
     const body = await request.json();
     const { userId, preferences } = body;
