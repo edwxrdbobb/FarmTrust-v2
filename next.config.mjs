@@ -23,12 +23,12 @@ const nextConfig = {
   // Add React strict mode to help catch issues
   reactStrictMode: true,
   // Configure API routes for file uploads
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-    responseLimit: '10mb',
-  },
+  //api: {
+  //  bodyParser: {
+  //    sizeLimit: '10mb',
+  //  },
+  //  responseLimit: '10mb',
+  //},
 }
 
 export default nextConfig
