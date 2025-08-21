@@ -9,11 +9,11 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGO_URI = process.env.MONGO_URI;
 
-if (!MONGODB_URI) {
+if (!MONGO_URI) {
     throw new Error(
-        'Please define the MONGODB_URI environment variable inside .env.local'
+        'Please define the MONGO_URI environment variable inside .env.local'
     );
 }
 
@@ -25,7 +25,7 @@ export async function connectDB(){
     if (cached.conn) return cached.conn;
 
     if (!cached.promise) {
-        cached.promise = mongoose.connect(MONGODB_URI as string).then((mongoose) => {
+        cached.promise = mongoose.connect(MONGO_URI as string).then((mongoose) => {
           return mongoose
         }).catch((error) => {
           console.log(error)
