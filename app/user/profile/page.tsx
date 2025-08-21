@@ -1,3 +1,5 @@
+"use client"
+
 import { Suspense } from "react"
 import { CalendarDays, Package, ShoppingBag, Star } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"

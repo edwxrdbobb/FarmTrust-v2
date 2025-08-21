@@ -5,7 +5,7 @@ import { useAuthContext } from "@/context/AuthContext"
 import { SiteHeader } from "@/components/common/site-header"
 import { SiteFooter } from "@/components/common/site-footer"
 import { VendorSidebar } from "@/components/vendor/vendor-sidebar"
-import { AdminLayout } from "@/components/admin/admin-layout"
+// import { AdminLayout } from "@/components/admin/admin-layout"
 
 interface AppLayoutProps {
   children: ReactNode
@@ -30,9 +30,13 @@ export function AppLayout({
   switch (layoutType) {
     case "admin":
       return (
-        <AdminLayout>
-          {children}
-        </AdminLayout>
+        <div className={`min-h-screen flex flex-col bg-[#F7FAF9] ${className}`}>
+          {showHeader && <SiteHeader />}
+          <main className="flex-1">
+            {children}
+          </main>
+          {showFooter && <SiteFooter />}
+        </div>
       )
     
     case "vendor":

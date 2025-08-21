@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useAuthContext } from "@/context/AuthContext"
 
@@ -20,7 +20,7 @@ function getRoleBasedRedirect(role: string): string {
   }
 }
 
-export function LoginPageWrapper({ children }: LoginPageWrapperProps) {
+function LoginPageWrapperContent({ children }: LoginPageWrapperProps) {
   const { user, loading } = useAuthContext()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -51,4 +51,18 @@ export function LoginPageWrapper({ children }: LoginPageWrapperProps) {
   }
 
   return <>{children}</>
+}
+
+export function LoginPageWrapper({ children }: LoginPageWrapperProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        </div>
+      }
+    >
+      <LoginPageWrapperContent>{children}</LoginPageWrapperContent>
+    </Suspense>
+  )
 }

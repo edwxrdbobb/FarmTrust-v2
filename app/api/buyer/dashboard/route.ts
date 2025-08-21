@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 // import { verifyAuth } from "@/lib/auth"
 import { connectDB } from "@/lib/db"
-import { Order } from "@/models/order_model"
-import { Product } from "@/models/product_model"
-import { Review } from "@/models/review_model"
-
+import Order from "@/models/order_model"
+import Product from "@/models/product_model"
+import Review from "@/models/review_model"
+  
 export async function GET(request: NextRequest) {
   try {
     const authResult = await false
